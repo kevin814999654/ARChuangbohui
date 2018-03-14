@@ -29,7 +29,7 @@ public class MovingCtr : MonoBehaviour {
     }
     
     public List<MoveClinet> myclinet;
-    private List<Animation> AnimationList;
+ //   private List<Animation> AnimationList;
     public List<SampleImageTargetBehaviour> SampleImageTargetBehaviourlist;
     // Use this for initialization
     void Start () {
@@ -68,7 +68,7 @@ public class MovingCtr : MonoBehaviour {
             }
         }
     }
-
+/*
     public void StopAnimation()
     {
         foreach (var items in AnimationList)
@@ -77,7 +77,7 @@ public class MovingCtr : MonoBehaviour {
         }
         AnimationList.Clear();
     }
-
+    */
     public void ResetAnimation() {
 
     }
@@ -105,11 +105,11 @@ public class MovingCtr : MonoBehaviour {
         {
             Animation anim = MoveClinet.transform.GetComponent<Animation>();
             anim.Play(MoveClinet.clip.name);
-            AnimationList.Add(anim);
+      //       AnimationList.Add(anim);
         }
         catch (Exception e)
-        {
-            Debug.Log(e.Message);
-        }
+       {
+           Debug.Log(e.Message);
+       }
     }
 }

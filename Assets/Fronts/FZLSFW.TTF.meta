@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: a74577d6ce8db9948a8b7f2471c1fb7a
+timeCreated: 1521008841
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 24
+  forceTextureCase: -1
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: FZLiShu-S01T
+  fontNames:
+  - FZLiShu-S01T
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 1
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
