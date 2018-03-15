@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
+using System;
 
 public class ClientScript : MonoBehaviour {
 
@@ -22,6 +24,7 @@ public class ClientScript : MonoBehaviour {
 
     private void OnEnable()
     {
+
         RayCast.OnClicking += OnClick;
     }
 
@@ -66,12 +69,36 @@ public class ClientScript : MonoBehaviour {
         sprite.color = new Color32(0, 0, 0, 0);
     }
 
-    public void ShowText(GameObject _gameObject) {
-        LeanTween.scaleY(_gameObject, 1F, .2f).setEase(LeanTweenType.easeInCubic);
+    public void ShowText(Scroll scroll) {
+        scroll.gameObject.SetActive(true);
+        scroll.animation.Play(scroll.clips[0].name);
+        LeanTween.value(0, 1, 1).setOnUpdate(delegate(float value) {
+                float fillAmout = scroll.AnimationMask.GetComponent<Image>().fillAmount;
+                //Debug.Log(fillAmout);
+
+                float ypos = GlobalFun.instance.Map(fillAmout, 0.1f, 0.3f, scroll.startPos.y, scroll.EndPos.y);
+               // Debug.Log(ypos);
+                scroll.StartTrans.localPosition = new Vector3(0, ypos ,0);
+
+        });
     }
 
-    public void HideText(GameObject _gameObject) {
-        //Debug.Log("Hide");
-        LeanTween.scaleY(_gameObject, 0, .2f).setEase(LeanTweenType.easeInCubic);
+    public void HideText(Scroll scroll) {
+
+        Debug.Log(scroll.startPos.y);
+       
+        scroll.animation.Play(scroll.clips[1].name);
+        LeanTween.value(0, 1, 1).setOnUpdate(delegate (float value) {
+            float fillAmout = scroll.AnimationMask.GetComponent<Image>().fillAmount;
+            //Debug.Log(fillAmout);
+
+            float ypos = GlobalFun.instance.Map(fillAmout, 0.1f, 0.3f,  scroll.startPos.y, scroll.EndPos.y);
+             Debug.Log(scroll.EndPos.y);
+            // Debug.Log(ypos);
+            scroll.StartTrans.localPosition = new Vector3(0, ypos, 0);
+
+        }).setOnComplete(delegate() {
+            scroll.gameObject.SetActive(false);
+        });
     }
 }
