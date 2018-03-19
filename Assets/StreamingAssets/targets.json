@@ -6,8 +6,8 @@
       "name" : "argame"
     },
     {
-      "image" : "idback.jpg",
-      "name" : "idback",
+      "image" : "BackTriggle.jpg",
+      "name" : "BackTriggle",
       "size" : [8.56, 5.4],
       "uid" : "uid-string, should NOT duplicate",
       "meta" : "what ever string you like."
@@ -19,6 +19,13 @@
       "size" : [8.56, 5.4],
       "uid" : "uid-string, should NOT duplicate",
       "meta" : "what ever string you like."
-    }
+    },
+    {
+      "image" : "heshan.jpg",
+      "name" : "heshan",
+      "size" : [8.56, 5.4],
+      "uid" : "uid-string, should NOT duplicate",
+      "meta" : "what ever string you like."
+    } 
   ]
 }

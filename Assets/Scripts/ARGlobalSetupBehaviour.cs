@@ -50,27 +50,27 @@ namespace Sample
 
         void OnTargetFound(ARCameraBaseBehaviour arcameraBehaviour, TargetAbstractBehaviour targetBehaviour, Target target)
         {
-            Debug.Log("<Global Handler> Found: " + target.Id);
+       //     Debug.Log("<Global Handler> Found: " + target.Id);
         }
 
         void OnTargetLost(ARCameraBaseBehaviour arcameraBehaviour, TargetAbstractBehaviour targetBehaviour, Target target)
         {
-            Debug.Log("<Global Handler> Lost: " + target.Id);
+         //   Debug.Log("<Global Handler> Lost: " + target.Id);
         }
 
         void OnTargetLoad(ImageTrackerBaseBehaviour trackerBehaviour, ImageTargetBaseBehaviour targetBehaviour, Target target, bool status)
         {
-            Debug.Log("<Global Handler> Load target (" + status + "): " + target.Id + " (" + target.Name + ") " + " -> " + trackerBehaviour);
+        //    Debug.Log("<Global Handler> Load target (" + status + "): " + target.Id + " (" + target.Name + ") " + " -> " + trackerBehaviour);
         }
 
         void OnTargetUnload(ImageTrackerBaseBehaviour trackerBehaviour, ImageTargetBaseBehaviour targetBehaviour, Target target, bool status)
         {
-            Debug.Log("<Global Handler> Unload target (" + status + "): " + target.Id + " (" + target.Name + ") " + " -> " + trackerBehaviour);
+         //   Debug.Log("<Global Handler> Unload target (" + status + "): " + target.Id + " (" + target.Name + ") " + " -> " + trackerBehaviour);
         }
 
         private void OnTextMessage(ARCameraBaseBehaviour arcameraBehaviour, string text)
         {
-            Debug.Log("got text: " + text);
+       //     Debug.Log("got text: " + text);
         }
     }
 }

@@ -3,17 +3,17 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+public enum AnimationsObject { ShiShan, HeShan, ImageTrack3, BackGroundAnimationPlay, }
 public class MovingCtr : MonoBehaviour {
-    public enum AnimationsObject { ImageTrack1, ImageTrack2, ImageTrack3, FishingBoat,Boat,}
+    
     public static MovingCtr instance;
+
     [System.Serializable]
-
-
-
     public class MoveClinet {
+        public string ObjectName;
         public AnimationsObject Name;
-        public Transform transform;
-        public AnimationClip clip;
+        public Transform[] Atransform;
+        public AnimationClip[] clip;
         public  MoveClinet() {
         }
 
@@ -43,41 +43,29 @@ public class MovingCtr : MonoBehaviour {
         {
             switch (myclinet[i].Name)
             {
-                case AnimationsObject.ImageTrack1:
+                case AnimationsObject.ShiShan:
                     myclinet[i].MoveBehavior(OpenText, myclinet[i]);
+                   
                     break;
 
-                case AnimationsObject.ImageTrack2:
-                   // myclinet[i].MoveBehavior(MoveFishingBoat, myclinet[i]);
+                case AnimationsObject.HeShan:
+                    myclinet[i].MoveBehavior(OpenText, myclinet[i]);
                     break;
 
                 case AnimationsObject.ImageTrack3:
                   //  myclinet[i].MoveBehavior(MoveFishingBoat, myclinet[i]);
                     break;
 
-                case AnimationsObject.FishingBoat:
-                    myclinet[i].MoveBehavior(MoveFishingBoat, myclinet[i]);
+                case AnimationsObject.BackGroundAnimationPlay:
+                    myclinet[i].MoveBehavior(MoveBGAnim, myclinet[i]);
                     break;
-
-                case AnimationsObject.Boat:
-                    myclinet[i].MoveBehavior(BoatMove, myclinet[i]);
-                    break;
-
                 default:
                     break;
             }
         }
     }
-/*
-    public void StopAnimation()
-    {
-        foreach (var items in AnimationList)
-        {
-            items.Stop();
-        }
-        AnimationList.Clear();
-    }
-    */
+
+
     public void ResetAnimation() {
 
     }
@@ -88,28 +76,31 @@ public class MovingCtr : MonoBehaviour {
     }
 
 
-    void MoveFishingBoat(MoveClinet MoveClinet) {
+    void MoveBGAnim(MoveClinet MoveClinet) {
         AnimationPlay(MoveClinet);
-    }
 
-    void BoatMove(MoveClinet MoveClinet) {
-        AnimationPlay(MoveClinet);
     }
 
     void OpenText(MoveClinet MoveClinet) {
         AnimationPlay(MoveClinet);
     }
 
-    void AnimationPlay(MoveClinet MoveClinet) {
-        try
-        {
-            Animation anim = MoveClinet.transform.GetComponent<Animation>();
-            anim.Play(MoveClinet.clip.name);
-      //       AnimationList.Add(anim);
-        }
-        catch (Exception e)
-       {
-           Debug.Log(e.Message);
-       }
+    void AnimationPlay(MoveClinet _MoveClinet) {
+            try
+            {
+            for (int i = 0; i < _MoveClinet.Atransform.Length; i++)
+            {
+                //Debug.Log(_MoveClinet .Name+ ":"+_MoveClinet.Atransform.Length);
+                Animation anim = _MoveClinet.Atransform[i].GetComponent<Animation>();
+                anim.Play(_MoveClinet.clip[i].name);
+            }
+
+                //       AnimationList.Add(anim);
+            }
+            catch (Exception e)
+            {
+                Debug.Log(e.Message);
+            }
+       // }
     }
 }

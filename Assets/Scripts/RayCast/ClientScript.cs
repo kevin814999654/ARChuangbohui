@@ -63,38 +63,42 @@ public class ClientScript : MonoBehaviour {
     }
 
     public void BackWhite() {
-        LeanTween.cancelAll();
         SpriteRenderer sprite = this.GetComponent<SpriteRenderer>();
         //Debug.Log(this.name + "BackWhite " + "is triggered");
         sprite.color = new Color32(0, 0, 0, 0);
     }
 
+    public void GizemoDetectAnim(Transform transform) {
+        LeanTween.scale(transform.gameObject, Vector3.one / 50, .4f).setEase(LeanTweenType.easeInOutElastic);
+    }
+
+    public void GizemoUnDetectAnim(Transform transform)
+    {
+        LeanTween.scale(transform.gameObject, new Vector3(.01f,.01f,01f), .4f).setEase(LeanTweenType.easeInOutElastic);
+    }
+
     public void ShowText(Scroll scroll) {
+
         scroll.gameObject.SetActive(true);
         scroll.animation.Play(scroll.clips[0].name);
         LeanTween.value(0, 1, 1).setOnUpdate(delegate(float value) {
                 float fillAmout = scroll.AnimationMask.GetComponent<Image>().fillAmount;
                 //Debug.Log(fillAmout);
 
-                float ypos = GlobalFun.instance.Map(fillAmout, 0.1f, 0.3f, scroll.startPos.y, scroll.EndPos.y);
-               // Debug.Log(ypos);
+                float ypos = GlobalFun.instance.Map(fillAmout, 0f, 1f, scroll.startPos.y, scroll.EndPos.y);
                 scroll.StartTrans.localPosition = new Vector3(0, ypos ,0);
-
         });
     }
 
     public void HideText(Scroll scroll) {
-
-        Debug.Log(scroll.startPos.y);
-       
+  
         scroll.animation.Play(scroll.clips[1].name);
         LeanTween.value(0, 1, 1).setOnUpdate(delegate (float value) {
             float fillAmout = scroll.AnimationMask.GetComponent<Image>().fillAmount;
             //Debug.Log(fillAmout);
 
-            float ypos = GlobalFun.instance.Map(fillAmout, 0.1f, 0.3f,  scroll.startPos.y, scroll.EndPos.y);
-             Debug.Log(scroll.EndPos.y);
-            // Debug.Log(ypos);
+            float ypos = GlobalFun.instance.Map(fillAmout, 0f, 1f,  scroll.startPos.y, scroll.EndPos.y);
+
             scroll.StartTrans.localPosition = new Vector3(0, ypos, 0);
 
         }).setOnComplete(delegate() {
