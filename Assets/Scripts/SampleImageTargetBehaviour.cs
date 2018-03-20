@@ -29,7 +29,7 @@ namespace Sample
         {
             //Debug.Log("Found: " + Target.Id);
             clientScript.ToRed();
-            MovingCtr.instance.StartBackAnimation();           
+            MovingCtr.instance.StartBackAnimation(animationsObject);           
         }
 
         void OnTargetLost(TargetAbstractBehaviour behaviour)

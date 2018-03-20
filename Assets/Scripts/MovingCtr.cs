@@ -38,18 +38,16 @@ public class MovingCtr : MonoBehaviour {
         }
     }
 
-    public void StartBackAnimation() {
-        for (int i = 0; i < myclinet.Count; i++)
-        {
-            switch (myclinet[i].Name)
+    public void StartBackAnimation(AnimationsObject _animationsObject) {
+        MoveClinet client = getClient(_animationsObject);
+            switch (_animationsObject)
             {
                 case AnimationsObject.ShiShan:
-                    myclinet[i].MoveBehavior(OpenText, myclinet[i]);
-                   
+                client.MoveBehavior(OpenText, client);                  
                     break;
 
                 case AnimationsObject.HeShan:
-                    myclinet[i].MoveBehavior(OpenText, myclinet[i]);
+                client.MoveBehavior(OpenText, client);
                     break;
 
                 case AnimationsObject.ImageTrack3:
@@ -57,14 +55,24 @@ public class MovingCtr : MonoBehaviour {
                     break;
 
                 case AnimationsObject.BackGroundAnimationPlay:
-                    myclinet[i].MoveBehavior(MoveBGAnim, myclinet[i]);
+                client.MoveBehavior(MoveBGAnim, client);
                     break;
                 default:
                     break;
             }
-        }
     }
 
+    MoveClinet getClient(AnimationsObject _animationsObject) {
+
+        foreach (MoveClinet item in myclinet)
+        {
+            if (item.Name == _animationsObject)
+            {
+                return item;
+            }
+        }
+        return null;
+    }
 
     public void ResetAnimation() {
 
@@ -92,6 +100,7 @@ public class MovingCtr : MonoBehaviour {
             {
                 //Debug.Log(_MoveClinet .Name+ ":"+_MoveClinet.Atransform.Length);
                 Animation anim = _MoveClinet.Atransform[i].GetComponent<Animation>();
+              //  Debug.Log(_MoveClinet.clip[i].name);
                 anim.Play(_MoveClinet.clip[i].name);
             }
 
