@@ -68,13 +68,20 @@ public class ClientScript : MonoBehaviour {
         sprite.color = new Color32(0, 0, 0, 0);
     }
 
-    public void GizemoDetectAnim(Transform transform) {
-        LeanTween.scale(transform.gameObject, Vector3.one / 50, .4f).setEase(LeanTweenType.easeInOutElastic);
+    public void GizemoDetectAnim(Transform _transform) {
+        LeanTween.cancel(_transform.gameObject);
+        LeanTween.scale(_transform.gameObject, Vector3.one / 50, .4f).setEase(LeanTweenType.easeInOutElastic).setOnComplete(delegate (){
+            LeanTween.color(_transform.gameObject, new Color(GlobalFun.instance.GizemoColor.r, GlobalFun.instance.GizemoColor.g, GlobalFun.instance.GizemoColor.b, 0f), .5f).setEase(LeanTweenType.easeOutCubic);
+        });
     }
 
-    public void GizemoUnDetectAnim(Transform transform)
+    public void GizemoUnDetectAnim(Transform _transform)
     {
-        LeanTween.scale(transform.gameObject, new Vector3(.01f,.01f,01f), .4f).setEase(LeanTweenType.easeInOutElastic);
+        LeanTween.cancel(_transform.gameObject);
+        LeanTween.color(_transform.gameObject, GlobalFun.instance.GizemoColor, .5f).setEase(LeanTweenType.easeOutCubic).setOnComplete(delegate () {
+            LeanTween.scale(_transform.gameObject, new Vector3(.01f, .01f, 01f), .4f).setEase(LeanTweenType.easeInOutElastic);
+        });
+       
     }
 
     public void ShowText(Scroll scroll) {

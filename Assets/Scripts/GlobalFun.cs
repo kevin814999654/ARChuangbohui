@@ -5,6 +5,7 @@ using UnityEngine;
 
 public  class GlobalFun :MonoBehaviour  {
     public static GlobalFun instance;
+    public Color GizemoColor;
     private void Awake()
     {
         if (instance == null)
