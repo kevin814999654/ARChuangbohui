@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
-public enum AnimationsObject { ShiShan, HeShan, ImageTrack3, BackGroundAnimationPlay, }
+public enum AnimationsObject { ShiShan, HeShan, TaiHu, BackGroundAnimationPlay, }
 public class MovingCtr : MonoBehaviour {
     
     public static MovingCtr instance;
@@ -50,8 +50,8 @@ public class MovingCtr : MonoBehaviour {
                 client.MoveBehavior(OpenText, client);
                     break;
 
-                case AnimationsObject.ImageTrack3:
-                  //  myclinet[i].MoveBehavior(MoveFishingBoat, myclinet[i]);
+                case AnimationsObject.TaiHu:
+                   client.MoveBehavior(OpenText, client);
                     break;
 
                 case AnimationsObject.BackGroundAnimationPlay:
