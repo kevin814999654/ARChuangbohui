@@ -12,6 +12,8 @@ public class SoundManger : MonoBehaviour {
         BGMDictionary.Add(AnimationsObject.ShiShan, BGM[0]);
         BGMDictionary.Add(AnimationsObject.HeShan, BGM[1]);
         BGMDictionary.Add(AnimationsObject.TaiHu, BGM[2]);
+        BGMDictionary.Add(AnimationsObject.SheiXi, BGM[3]);
+        BGMDictionary.Add(AnimationsObject.JinHangYunHe, BGM[4]);
     }
 	
 	// Update is called once per frame

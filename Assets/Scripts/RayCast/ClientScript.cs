@@ -9,17 +9,16 @@ public class ClientScript : MonoBehaviour {
 
     public UnityEvent EnterEvent;
     public UnityEvent ExitEvent;
+    
     // Use this for initialization
     public void SubScribe()
     {
-        RayCast.OnLooking -= this.exitEvent;
-        RayCast.OnLooking += this.enterEvent;
+        enterEvent();
     }
 
     public void UnSubscribe()
     {
-        RayCast.OnLooking -= this.enterEvent;
-        RayCast.OnLooking += this.exitEvent;   
+        exitEvent();
     }
 
     private void OnEnable()
@@ -85,7 +84,7 @@ public class ClientScript : MonoBehaviour {
     }
 
     public void ShowText(Scroll scroll) {
-
+       // Debug.Log(scroll.name + "_" + "Show Text");
         scroll.gameObject.SetActive(true);
         scroll.animation.Play(scroll.clips[0].name);
         LeanTween.value(0, 1, 1).setOnUpdate(delegate(float value) {
@@ -98,7 +97,7 @@ public class ClientScript : MonoBehaviour {
     }
 
     public void HideText(Scroll scroll) {
-  
+       // Debug.Log(scroll.name + "_" + "Hide Text");
         scroll.animation.Play(scroll.clips[1].name);
         LeanTween.value(0, 1, 1).setOnUpdate(delegate (float value) {
             float fillAmout = scroll.AnimationMask.GetComponent<Image>().fillAmount;

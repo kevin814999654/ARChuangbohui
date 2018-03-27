@@ -90,7 +90,7 @@ public class RayCast : MonoBehaviour {
 
     void OnPointerEnter() {
         Onexit = true;
-        OnLooking();
+      //  OnLooking();
     }
 
     void OnPointUpdate() {
@@ -103,7 +103,7 @@ public class RayCast : MonoBehaviour {
       //  Debug.Log("HIT NOTHING Current client DeSubscribe !");
         SubScribeAndDeSub(false);
         if (OnLooking != null) {
-            OnLooking();
+          //  OnLooking();
         }        
         RayCastHolder = null;
     }
