@@ -93,6 +93,9 @@ public class ClientScript : MonoBehaviour {
 
                 float xpos = GlobalFun.instance.Map(fillAmout, 0f, 1f, scroll.startPos.x, scroll.EndPos.x);
                 scroll.StartTrans.localPosition = new Vector3(xpos, scroll.StartTrans.localPosition.y, scroll.StartTrans.localPosition.z);
+        }).setOnComplete(delegate(){
+           GizemoCtr.instance.GizemoCenterAnimation(1.5f, 1f);
+            GizemoCtr.instance.IMG.fillAmount = 0;
         });
     }
 
