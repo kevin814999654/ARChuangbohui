@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class RayCast : MonoBehaviour {
-    public Transform Gizmos;
     public delegate void Onlooking();
     public static event Onlooking OnLooking;
     public delegate void OnClick();
@@ -120,7 +119,7 @@ public class RayCast : MonoBehaviour {
                 ClientScript client = RayCastHolder.GetComponent<ClientScript>();
                 if (!i)
                 {
-                   // client.UnSubscribe();
+                     //client.UnSubscribe();
                 }
                 else
                 {
