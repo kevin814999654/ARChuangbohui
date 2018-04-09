@@ -11,15 +11,20 @@ public class RayCast : MonoBehaviour {
     [HideInInspector]
     public Transform RayCastHolder;
     private bool Onexit = true;
-
+    public bool EnableRaycast = true;
+    public static RayCast instance;
     // Use this for initialization
     void Start() {
-
+        if (instance == null) {
+            instance = this;
+        }
     }
     // Update is called once per frame
     void Update() {
-        looking();
-
+        if (EnableRaycast) {
+            looking();
+         //   Debug.Log("doing");
+        }
     }
 
     void looking() {
@@ -115,11 +120,12 @@ public class RayCast : MonoBehaviour {
                 ClientScript client = RayCastHolder.GetComponent<ClientScript>();
                 if (!i)
                 {
-                    client.UnSubscribe();
+                   // client.UnSubscribe();
                 }
                 else
                 {
                     client.SubScribe();
+                    EnableRaycast = false;
                 }
             }
         }

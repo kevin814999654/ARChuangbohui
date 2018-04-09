@@ -1,12 +1,15 @@
 fileFormatVersion: 2
 guid: 68144728f6c16dd43889e67edfb5ef07
-timeCreated: 1521092019
+timeCreated: 1523260949
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: Scroll_Bar_Top
     21300002: Scroll_Page
     21300004: Scroll_Bar_Bottom
+    21300006: Scroll_0
+    21300008: Scroll_1
+    21300010: Scroll_2
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -86,43 +89,43 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Scroll_Bar_Top
+      name: Scroll_0
       rect:
         serializedVersion: 2
-        x: 94
-        y: 419
-        width: 285
-        height: 33
+        x: 10
+        y: 91
+        width: 34
+        height: 288
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Scroll_Page
+      name: Scroll_1
       rect:
         serializedVersion: 2
-        x: 117
-        y: 49
-        width: 234
-        height: 364
+        x: 49
+        y: 119
+        width: 364
+        height: 234
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Scroll_Bar_Bottom
+      name: Scroll_2
       rect:
         serializedVersion: 2
-        x: 91
-        y: 10
-        width: 284
-        height: 34
+        x: 419
+        y: 88
+        width: 33
+        height: 288
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

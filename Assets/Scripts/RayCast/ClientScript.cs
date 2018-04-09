@@ -68,18 +68,18 @@ public class ClientScript : MonoBehaviour {
     }
 
     public void GizemoDetectAnim(Transform _transform) {
-        LeanTween.cancel(_transform.gameObject);
-        LeanTween.scale(_transform.gameObject, Vector3.one / 50, .4f).setEase(LeanTweenType.easeInOutElastic).setOnComplete(delegate (){
-            LeanTween.color(_transform.gameObject, new Color(GlobalFun.instance.GizemoColor.r, GlobalFun.instance.GizemoColor.g, GlobalFun.instance.GizemoColor.b, 0f), .5f).setEase(LeanTweenType.easeOutCubic);
-        });
+        //LeanTween.cancel(_transform.gameObject);
+        //LeanTween.scale(_transform.gameObject, Vector3.one / 50, .4f).setEase(LeanTweenType.easeInOutElastic).setOnComplete(delegate (){
+        //    LeanTween.color(_transform.gameObject, new Color(GlobalFun.instance.GizemoColor.r, GlobalFun.instance.GizemoColor.g, GlobalFun.instance.GizemoColor.b, 0f), .5f).setEase(LeanTweenType.easeOutCubic);
+        //});
     }
 
     public void GizemoUnDetectAnim(Transform _transform)
     {
-        LeanTween.cancel(_transform.gameObject);
-        LeanTween.color(_transform.gameObject, GlobalFun.instance.GizemoColor, .5f).setEase(LeanTweenType.easeOutCubic).setOnComplete(delegate () {
-            LeanTween.scale(_transform.gameObject, new Vector3(.01f, .01f, 01f), .4f).setEase(LeanTweenType.easeInOutElastic);
-        });
+        //LeanTween.cancel(_transform.gameObject);
+        //LeanTween.color(_transform.gameObject, GlobalFun.instance.GizemoColor, .5f).setEase(LeanTweenType.easeOutCubic).setOnComplete(delegate () {
+        //    LeanTween.scale(_transform.gameObject, new Vector3(.01f, .01f, 01f), .4f).setEase(LeanTweenType.easeInOutElastic);
+        //});
        
     }
 
@@ -91,8 +91,8 @@ public class ClientScript : MonoBehaviour {
                 float fillAmout = scroll.AnimationMask.GetComponent<Image>().fillAmount;
                 //Debug.Log(fillAmout);
 
-                float ypos = GlobalFun.instance.Map(fillAmout, 0f, 1f, scroll.startPos.y, scroll.EndPos.y);
-                scroll.StartTrans.localPosition = new Vector3(0, ypos ,0);
+                float xpos = GlobalFun.instance.Map(fillAmout, 0f, 1f, scroll.startPos.x, scroll.EndPos.x);
+                scroll.StartTrans.localPosition = new Vector3(xpos, scroll.StartTrans.localPosition.y, scroll.StartTrans.localPosition.z);
         });
     }
 
@@ -103,12 +103,13 @@ public class ClientScript : MonoBehaviour {
             float fillAmout = scroll.AnimationMask.GetComponent<Image>().fillAmount;
             //Debug.Log(fillAmout);
 
-            float ypos = GlobalFun.instance.Map(fillAmout, 0f, 1f,  scroll.startPos.y, scroll.EndPos.y);
+            float xpos = GlobalFun.instance.Map(fillAmout, 0f, 1f,  scroll.startPos.x, scroll.EndPos.x);
 
-            scroll.StartTrans.localPosition = new Vector3(0, ypos, 0);
+            scroll.StartTrans.localPosition = new Vector3(xpos, scroll.StartTrans.localPosition.y, scroll.StartTrans.localPosition.z);
 
         }).setOnComplete(delegate() {
             scroll.gameObject.SetActive(false);
+            RayCast.instance.EnableRaycast = true;
         });
     }
 }
