@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class RayCast : MonoBehaviour {
     public delegate void Onlooking();
@@ -12,6 +13,8 @@ public class RayCast : MonoBehaviour {
     private bool Onexit = true;
     public bool EnableRaycast = true;
     public static RayCast instance;
+
+    public Scroll scroll;
     // Use this for initialization
     void Start() {
         if (instance == null) {
@@ -94,8 +97,18 @@ public class RayCast : MonoBehaviour {
 
     void OnPointerEnter() {
         Onexit = true;
+        try
+        {
+            ClientScript client = RayCastHolder.GetComponent<ClientScript>();
+            scroll.UpdateScroll(client.sample.animationsObject);
+        }
+        catch (Exception e)
+        {
 
-        GizemoCtr.instance.Loadinfo(()=> SubScribeAndDeSub(true));
+            Debug.Log(e);
+        }
+        GizemoCtr.instance.isbreak = false;
+       StartCoroutine( GizemoCtr.instance.Loadinfo(()=> SubScribeAndDeSub(true)));
 
         
         //  OnLooking();
@@ -110,6 +123,8 @@ public class RayCast : MonoBehaviour {
         Onexit = false;
       //  Debug.Log("HIT NOTHING Current client DeSubscribe !");
         SubScribeAndDeSub(false);
+        GizemoCtr.instance.isbreak = true;
+        StartCoroutine(GizemoCtr.instance.Loadinfo(() => SubScribeAndDeSub(true)));
         if (OnLooking != null) {
           //  OnLooking();
         }        
@@ -123,7 +138,7 @@ public class RayCast : MonoBehaviour {
                 ClientScript client = RayCastHolder.GetComponent<ClientScript>();
                 if (!i)
                 {
-                     //client.UnSubscribe();
+                    // client.UnSubscribe();
                 }
                 else
                 {

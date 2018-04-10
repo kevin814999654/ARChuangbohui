@@ -4,8 +4,9 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 using System;
-
+using Sample;
 public class ClientScript : MonoBehaviour {
+    public SampleImageTargetBehaviour sample;
 
     public UnityEvent EnterEvent;
     public UnityEvent ExitEvent;

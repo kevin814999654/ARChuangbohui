@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
-public enum AnimationsObject { ShiShan, HeShan, TaiHu, BackGroundAnimationPlay, SheiXi,JinHangYunHe}
+public enum AnimationsObject { 狮子山, 何山, 太湖, BackGroundAnimationPlay, 春台社戏,京杭运河}
 public class MovingCtr : MonoBehaviour {
     
     public static MovingCtr instance;
@@ -42,23 +42,23 @@ public class MovingCtr : MonoBehaviour {
         MoveClinet client = getClient(_animationsObject);
             switch (_animationsObject)
             {
-                case AnimationsObject.ShiShan:
+                case AnimationsObject.狮子山:
                 client.MoveBehavior(OpenText, client);                  
                     break;
 
-                case AnimationsObject.HeShan:
+                case AnimationsObject.何山:
                 client.MoveBehavior(OpenText, client);
                     break;
 
-                case AnimationsObject.TaiHu:
+                case AnimationsObject.太湖:
                    client.MoveBehavior(OpenText, client);
                     break;
 
-            case AnimationsObject.SheiXi:
+            case AnimationsObject.春台社戏:
                 client.MoveBehavior(OpenText, client);
                 break;
 
-            case AnimationsObject.JinHangYunHe:
+            case AnimationsObject.京杭运河:
                 client.MoveBehavior(OpenText, client);
                 break;
 

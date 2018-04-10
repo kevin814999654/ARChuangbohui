@@ -23,6 +23,7 @@ namespace Sample
             TargetLost += OnTargetLost;
             TargetLoad += OnTargetLoad;
             TargetUnload += OnTargetUnload;
+          //  Debug.Log(animationsObject.ToString());
         }
 
         void OnTargetFound(TargetAbstractBehaviour behaviour)
