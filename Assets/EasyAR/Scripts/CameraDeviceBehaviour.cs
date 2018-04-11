@@ -37,6 +37,8 @@ namespace EasyAR
             float Value = (Vector.x - perviousAcc.x) + (Vector.y - perviousAcc.y) + (Vector.z - perviousAcc.z);
 
             DebugText.text = Value.ToString();
+
+            perviousAcc = Vector;
         }
 
 
