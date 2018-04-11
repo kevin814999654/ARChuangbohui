@@ -26,76 +26,80 @@ namespace EasyAR
             base.Start();
             OpenAndStart();
 
-          //  StartCoroutine(ScreenProtect());
+           StartCoroutine(ScreenProtect());
 
+        }
+
+
+        IEnumerator ScreenProtect() {
+            Vector3 Vector = Input.acceleration;
+            float Value =Mathf.Abs(Vector.x - perviousAcc.x) + Mathf.Abs(Vector.y - perviousAcc.y) + Mathf.Abs(Vector.z - perviousAcc.z);
+            DebugText.text = Value.ToString();
+            perviousAcc = Vector;
+            yield return new  WaitForSeconds(1);
         }
 
 
         private void Update()
         {
-            Vector3 Vector = Input.acceleration;
-            float Value = (Vector.x - perviousAcc.x) + (Vector.y - perviousAcc.y) + (Vector.z - perviousAcc.z);
-
-            DebugText.text = Value.ToString();
-
-            perviousAcc = Vector;
-        }
-
-
-        IEnumerator ScreenProtect()
-        {
-            float currentAccDis = Input.acceleration.magnitude;
-            check(currentAccDis);
-
-            yield return new WaitForSeconds(.5f);
-            StartCoroutine(ScreenProtect());
-        }
-
-
-        void check(float _currentAccDis) {
-            if (AccDis != _currentAccDis)
-            {
-                StopCoroutine(CountDown());
-                if (!IsWakeUp)
-                {
-                    IsWakeUp = true;
-                    WakeUp();
-                }
-            }
-            else
-            {
-
-                if (!StartCoutDown)
-                {
-                    StartCoutDown = true;
-                    StartCoroutine(CountDown());
-                }
-
-            }
-        }
-
-        IEnumerator CountDown() {
-            int time = 0;
-            while (StartCoutDown) {
-                time++;
-                yield return new WaitForSeconds(1f);
-                if (time == 10) {
-                    Sleep();
-                }
-            }
 
         }
 
-        void WakeUp()
-        {
-            OpenAndStart();
-        }
 
-        void Sleep()
-        {
-            Close();
-            StartCoutDown = false;
-            IsWakeUp = false;
-        }
-    }
+    //    IEnumerator ScreenProtect()
+    //    {
+    //        float currentAccDis = Input.acceleration.magnitude;
+    //        check(currentAccDis);
+
+    //        yield return new WaitForSeconds(.5f);
+    //        StartCoroutine(ScreenProtect());
+    //    }
+
+
+    //    void check(float _currentAccDis) {
+    //        if (AccDis != _currentAccDis)
+    //        {
+    //            StopCoroutine(CountDown());
+    //            if (!IsWakeUp)
+    //            {
+    //                IsWakeUp = true;
+    //                WakeUp();
+    //            }
+    //        }
+    //        else
+    //        {
+
+    //            if (!StartCoutDown)
+    //            {
+    //                StartCoutDown = true;
+    //                StartCoroutine(CountDown());
+    //            }
+
+    //        }
+    //    }
+
+    //    IEnumerator CountDown() {
+    //        int time = 0;
+    //        while (StartCoutDown) {
+    //            time++;
+    //            yield return new WaitForSeconds(1f);
+    //            if (time == 10) {
+    //                Sleep();
+    //            }
+    //        }
+
+    //    }
+
+    //    void WakeUp()
+    //    {
+    //        OpenAndStart();
+    //    }
+
+    //    void Sleep()
+    //    {
+    //        Close();
+    //        StartCoutDown = false;
+    //        IsWakeUp = false;
+    //    }
+    //}
 }
