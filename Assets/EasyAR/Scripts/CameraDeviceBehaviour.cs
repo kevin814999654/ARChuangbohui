@@ -36,7 +36,8 @@ namespace EasyAR
             float Value =Mathf.Abs(Vector.x - perviousAcc.x) + Mathf.Abs(Vector.y - perviousAcc.y) + Mathf.Abs(Vector.z - perviousAcc.z);
             DebugText.text = Value.ToString();
             perviousAcc = Vector;
-            yield return new  WaitForSeconds(1);
+            yield return new WaitForSeconds(1);
+            StartCoroutine(ScreenProtect());
         }
 
 
