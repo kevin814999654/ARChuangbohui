@@ -22,6 +22,10 @@ namespace EasyAR
         public List<ObjectTrackerBaseBehaviour> ObjectTrackerBehaviours = new List<ObjectTrackerBaseBehaviour>();
         public RecorderBaseBehaviour RecorderBehaviour;
 
+
+
+
+
         static ARBuilder()
         {
         }

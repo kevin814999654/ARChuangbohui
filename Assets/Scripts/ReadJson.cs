@@ -6,13 +6,12 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class ReadJson : MonoBehaviour {
+
     public static ReadJson instance;
     private JsonData itemDate;
     private string jsonString;
     [HideInInspector]
     public List<Information> myinformationList = new List<Information>();
-
-
 
 
     // Use this for initialization
