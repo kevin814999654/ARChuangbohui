@@ -9,6 +9,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.UI;
+
 namespace EasyAR
 {
     public class CameraDeviceBehaviour : CameraDeviceBaseBehaviour
@@ -16,18 +18,25 @@ namespace EasyAR
         private float AccDis=0;
         private bool IsWakeUp;
         private bool StartCoutDown;
-
+        [SerializeField]
+        Text DebugText;
         protected override void Start()
         {
             base.Start();
             OpenAndStart();
-#if !UNITY_EDITOR
-            StartCoroutine(ScreenProtect());
-#endif
+
+          //  StartCoroutine(ScreenProtect());
+
         }
 
 
-
+        private void Update()
+        {
+            float currentAccDis = Input.acceleration.magnitude;
+            string s = currentAccDis.ToString();
+            string Vector = Input.acceleration.ToString();
+            DebugText.text ="AccDis"+ s+"\n"+ "Acc"+Vector;
+        }
 
 
         IEnumerator ScreenProtect()
