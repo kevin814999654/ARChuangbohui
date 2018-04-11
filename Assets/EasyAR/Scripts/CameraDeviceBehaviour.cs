@@ -102,5 +102,5 @@ namespace EasyAR
     //        StartCoutDown = false;
     //        IsWakeUp = false;
     //    }
-    //}
+    }
 }
