@@ -2506,7 +2506,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11416542, guid: c633cd5d69c74234cb0dfa8e8bd5b984, type: 2}
       propertyPath: cameraIndex
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11421212, guid: c633cd5d69c74234cb0dfa8e8bd5b984, type: 2}
       propertyPath: simultaneousNum
