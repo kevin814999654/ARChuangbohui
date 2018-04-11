@@ -15,12 +15,16 @@ namespace EasyAR
 {
     public class CameraDeviceBehaviour : CameraDeviceBaseBehaviour
     {
+        public Color ScreenProtectColor;
+        public Color ScreenRunningColor;
+        [SerializeField]
+        GameObject ScreenProtectGameObject;
         public int ScreenProtectWaitTime;
         private int CountDownTime;
         private bool IsWakeUp=true;
         private Vector3 perviousAcc;
-        [SerializeField]
-        Text DebugText;
+        //[SerializeField]
+        //Text DebugText;
         protected override void Start()
         {
             base.Start();
@@ -34,7 +38,7 @@ namespace EasyAR
         IEnumerator ScreenProtect() {
             Vector3 Vector = Input.acceleration;
             float Value =Mathf.Abs(Vector.x - perviousAcc.x) + Mathf.Abs(Vector.y - perviousAcc.y) + Mathf.Abs(Vector.z - perviousAcc.z);
-            DebugText.text = Value.ToString();
+            //DebugText.text = Value.ToString();
             perviousAcc = Vector;
 
             if (Value > 0.01)
@@ -67,68 +71,22 @@ namespace EasyAR
         void Sleep()
         {
             IsWakeUp = false;
+            StopCapture();
             Close();
-
+            ScreenColorChange(ScreenProtectGameObject, ScreenProtectColor, .5f);
         }
 
         void WakeUp()
         {
             IsWakeUp = true;
+            ScreenColorChange(ScreenProtectGameObject, ScreenRunningColor, .5f);
+            StartCapture();
             OpenAndStart();
         }
 
-        private void Update()
-        {
 
+        void ScreenColorChange(GameObject gameObject, Color target, float time) {
+            LeanTween.color(gameObject, target, time).setEase(LeanTweenType.easeInOutQuart);
         }
-
-
-        //    IEnumerator ScreenProtect()
-        //    {
-        //        float currentAccDis = Input.acceleration.magnitude;
-        //        check(currentAccDis);
-
-        //        yield return new WaitForSeconds(.5f);
-        //        StartCoroutine(ScreenProtect());
-        //    }
-
-
-        //    void check(float _currentAccDis) {
-        //        if (AccDis != _currentAccDis)
-        //        {
-        //            StopCoroutine(CountDown());
-        //            if (!IsWakeUp)
-        //            {
-        //                IsWakeUp = true;
-        //                WakeUp();
-        //            }
-        //        }
-        //        else
-        //        {
-
-        //            if (!StartCoutDown)
-        //            {
-        //                StartCoutDown = true;
-        //                StartCoroutine(CountDown());
-        //            }
-
-        //        }
-        //    }
-
-        //    IEnumerator CountDown() {
-        //        int time = 0;
-        //        while (StartCoutDown) {
-        //            time++;
-        //            yield return new WaitForSeconds(1f);
-        //            if (time == 10) {
-        //                Sleep();
-        //            }
-        //        }
-
-        //    }
-
-
-
-
     }
 }
