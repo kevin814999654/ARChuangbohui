@@ -18,6 +18,7 @@ namespace EasyAR
         private float AccDis=0;
         private bool IsWakeUp;
         private bool StartCoutDown;
+        private Vector3 perviousAcc;
         [SerializeField]
         Text DebugText;
         protected override void Start()
@@ -32,10 +33,10 @@ namespace EasyAR
 
         private void Update()
         {
-            float currentAccDis = Input.acceleration.magnitude;
-            string s = currentAccDis.ToString();
-            string Vector = Input.acceleration.ToString();
-            DebugText.text ="AccDis"+ s+"\n"+ "Acc"+Vector;
+            Vector3 Vector = Input.acceleration;
+            float Value = (Vector.x - perviousAcc.x) + (Vector.y - perviousAcc.y) + (Vector.z - perviousAcc.z);
+
+            DebugText.text = Value.ToString();
         }
 
 
