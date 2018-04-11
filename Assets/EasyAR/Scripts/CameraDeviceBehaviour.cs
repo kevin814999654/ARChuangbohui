@@ -15,9 +15,9 @@ namespace EasyAR
 {
     public class CameraDeviceBehaviour : CameraDeviceBaseBehaviour
     {
-        private float AccDis=0;
-        private bool IsWakeUp;
-        private bool StartCoutDown;
+        public int ScreenProtectWaitTime;
+        private int CountDownTime;
+        private bool IsWakeUp=true;
         private Vector3 perviousAcc;
         [SerializeField]
         Text DebugText;
@@ -27,7 +27,7 @@ namespace EasyAR
             OpenAndStart();
 
            StartCoroutine(ScreenProtect());
-
+           StartCoroutine(StartCountDown());
         }
 
 
@@ -36,10 +36,46 @@ namespace EasyAR
             float Value =Mathf.Abs(Vector.x - perviousAcc.x) + Mathf.Abs(Vector.y - perviousAcc.y) + Mathf.Abs(Vector.z - perviousAcc.z);
             DebugText.text = Value.ToString();
             perviousAcc = Vector;
+
+            if (Value > 0.01)
+            {
+                CountDownTime = 0;
+                if (!IsWakeUp)
+                {
+                    WakeUp();
+                }
+            }
             yield return new WaitForSeconds(1);
             StartCoroutine(ScreenProtect());
         }
 
+
+        IEnumerator StartCountDown()
+        {
+            CountDownTime++;
+            if (CountDownTime == ScreenProtectWaitTime) {
+                if (IsWakeUp) {
+                   
+                    Sleep();
+                }
+            }
+            yield return new WaitForSeconds(1);
+            StartCoroutine(StartCountDown());
+        }
+
+
+        void Sleep()
+        {
+            IsWakeUp = false;
+            Close();
+
+        }
+
+        void WakeUp()
+        {
+            IsWakeUp = true;
+            OpenAndStart();
+        }
 
         private void Update()
         {
@@ -47,60 +83,52 @@ namespace EasyAR
         }
 
 
-    //    IEnumerator ScreenProtect()
-    //    {
-    //        float currentAccDis = Input.acceleration.magnitude;
-    //        check(currentAccDis);
+        //    IEnumerator ScreenProtect()
+        //    {
+        //        float currentAccDis = Input.acceleration.magnitude;
+        //        check(currentAccDis);
 
-    //        yield return new WaitForSeconds(.5f);
-    //        StartCoroutine(ScreenProtect());
-    //    }
+        //        yield return new WaitForSeconds(.5f);
+        //        StartCoroutine(ScreenProtect());
+        //    }
 
 
-    //    void check(float _currentAccDis) {
-    //        if (AccDis != _currentAccDis)
-    //        {
-    //            StopCoroutine(CountDown());
-    //            if (!IsWakeUp)
-    //            {
-    //                IsWakeUp = true;
-    //                WakeUp();
-    //            }
-    //        }
-    //        else
-    //        {
+        //    void check(float _currentAccDis) {
+        //        if (AccDis != _currentAccDis)
+        //        {
+        //            StopCoroutine(CountDown());
+        //            if (!IsWakeUp)
+        //            {
+        //                IsWakeUp = true;
+        //                WakeUp();
+        //            }
+        //        }
+        //        else
+        //        {
 
-    //            if (!StartCoutDown)
-    //            {
-    //                StartCoutDown = true;
-    //                StartCoroutine(CountDown());
-    //            }
+        //            if (!StartCoutDown)
+        //            {
+        //                StartCoutDown = true;
+        //                StartCoroutine(CountDown());
+        //            }
 
-    //        }
-    //    }
+        //        }
+        //    }
 
-    //    IEnumerator CountDown() {
-    //        int time = 0;
-    //        while (StartCoutDown) {
-    //            time++;
-    //            yield return new WaitForSeconds(1f);
-    //            if (time == 10) {
-    //                Sleep();
-    //            }
-    //        }
+        //    IEnumerator CountDown() {
+        //        int time = 0;
+        //        while (StartCoutDown) {
+        //            time++;
+        //            yield return new WaitForSeconds(1f);
+        //            if (time == 10) {
+        //                Sleep();
+        //            }
+        //        }
 
-    //    }
+        //    }
 
-    //    void WakeUp()
-    //    {
-    //        OpenAndStart();
-    //    }
 
-    //    void Sleep()
-    //    {
-    //        Close();
-    //        StartCoutDown = false;
-    //        IsWakeUp = false;
-    //    }
+
+
     }
 }
