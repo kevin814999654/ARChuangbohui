@@ -11,14 +11,14 @@ using UnityEngine;
 using System;
 using UnityEngine.UI;
 
-namespace EasyAR
-{
+using EasyAR;
+
     public class CameraDeviceBehaviour : CameraDeviceBaseBehaviour
     {
         public Color ScreenProtectColor;
         public Color ScreenRunningColor;
         [SerializeField]
-        GameObject ScreenProtectGameObject;
+        RawImage rawImage;
         public int ScreenProtectWaitTime;
         private int CountDownTime;
         private bool IsWakeUp=true;
@@ -71,22 +71,24 @@ namespace EasyAR
         void Sleep()
         {
             IsWakeUp = false;
-            StopCapture();
+        ChangeAlpha(rawImage, 0, 1, 1f);
+
+        StopCapture();
             Close();
-            ScreenColorChange(ScreenProtectGameObject, ScreenProtectColor, .5f);
-        }
+    }
 
         void WakeUp()
         {
             IsWakeUp = true;
-            ScreenColorChange(ScreenProtectGameObject, ScreenRunningColor, .5f);
+        ChangeAlpha(rawImage, 1, 0, 1f);
             StartCapture();
             OpenAndStart();
         }
 
 
-        void ScreenColorChange(GameObject gameObject, Color target, float time) {
-            LeanTween.color(gameObject, target, time).setEase(LeanTweenType.easeInOutQuart);
+        void ChangeAlpha(RawImage rawImage,float from, float to, float time) {
+            LeanTween.value(from, to, time).setOnUpdate((float value)=>{
+                rawImage.color = new Color(rawImage.color.r, rawImage.color.g, rawImage.color.b, value);
+        });
         }
     }
-}
