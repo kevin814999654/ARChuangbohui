@@ -1040,7 +1040,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2626,6 +2626,10 @@ Prefab:
       propertyPath: rawImage
       value: 
       objectReference: {fileID: 1635527824}
+    - target: {fileID: 11416542, guid: c633cd5d69c74234cb0dfa8e8bd5b984, type: 2}
+      propertyPath: text
+      value: 
+      objectReference: {fileID: 385970648}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c633cd5d69c74234cb0dfa8e8bd5b984, type: 2}
   m_IsPrefabParent: 0
@@ -4132,7 +4136,6 @@ GameObject:
   - component: {fileID: 1635527826}
   - component: {fileID: 1635527825}
   - component: {fileID: 1635527824}
-  - component: {fileID: 1635527829}
   m_Layer: 5
   m_Name: ScreenProtect
   m_TagString: Untagged
@@ -4232,18 +4235,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1635527829
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1635527823}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1200242548, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ShowMaskGraphic: 1
 --- !u!43 &1648654504
 Mesh:
   m_ObjectHideFlags: 0
