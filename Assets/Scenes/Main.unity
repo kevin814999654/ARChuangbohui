@@ -2630,6 +2630,10 @@ Prefab:
       propertyPath: text
       value: 
       objectReference: {fileID: 385970648}
+    - target: {fileID: 11416542, guid: c633cd5d69c74234cb0dfa8e8bd5b984, type: 2}
+      propertyPath: enableScreenIdle
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c633cd5d69c74234cb0dfa8e8bd5b984, type: 2}
   m_IsPrefabParent: 0

@@ -25,15 +25,17 @@ using EasyAR;
         private int CountDownTime;
         private bool IsWakeUp=true;
         private Vector3 perviousAcc;
+        public bool enableScreenIdle;
         //[SerializeField]
         //Text DebugText;
         protected override void Start()
         {
             base.Start();
             OpenAndStart();
-
-           StartCoroutine(ScreenProtect());
-           StartCoroutine(StartCountDown());
+        if (enableScreenIdle) {
+            StartCoroutine(ScreenProtect());
+            StartCoroutine(StartCountDown());
+        }
         }
 
 
