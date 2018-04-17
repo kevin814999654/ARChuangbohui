@@ -47,7 +47,7 @@ public class RayCast : MonoBehaviour {
                     if (RayCastHolder == null)
                     {
                          RayCastHolder = hit.collider.transform;
-                        // SubScribeAndDeSub(true);
+                         //SubScribeAndDeSub(true);
                     //     Debug.Log("Hit different object, from null to object");
                         //enter;
                         OnPointerEnter();
@@ -61,7 +61,7 @@ public class RayCast : MonoBehaviour {
 
                             RayCastHolder = hit.collider.transform;
 
-                          // SubScribeAndDeSub(true);
+                          //  SubScribeAndDeSub(true);
                     //        Debug.Log("Hit different object, subscribe the current one");
                              OnPointerEnter();
                         }
@@ -138,7 +138,7 @@ public class RayCast : MonoBehaviour {
                 ClientScript client = RayCastHolder.GetComponent<ClientScript>();
                 if (!i)
                 {
-                    client.UnSubscribe();
+                    // client.UnSubscribe();
                 }
                 else
                 {

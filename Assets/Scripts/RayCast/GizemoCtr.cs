@@ -37,6 +37,7 @@ public class GizemoCtr : MonoBehaviour {
                 action.Invoke();
                 break;
             }
+
         }
 
         while (isbreak)
