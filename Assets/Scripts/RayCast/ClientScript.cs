@@ -53,11 +53,11 @@ public class ClientScript : MonoBehaviour {
 
 
     public void ToRed() {
-        //SpriteRenderer sprite = this.GetComponent<SpriteRenderer>();
-        //LeanTween.value(0f, .1f, .8f).setLoopPingPong().setOnUpdate((float value) =>
-        //{
-        //    sprite.color = new Color(1f, 0f, 0f, value);
-        //}); 
+        SpriteRenderer sprite = this.GetComponent<SpriteRenderer>();
+        LeanTween.value(0f, .1f, .8f).setLoopPingPong().setOnUpdate((float value) =>
+        {
+            sprite.color = new Color(1f, 0f, 0f, value);
+        }); 
           
      //   Debug.Log(this.name+" " + "is triggered");
     }

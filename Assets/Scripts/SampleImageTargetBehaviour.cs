@@ -29,14 +29,14 @@ namespace Sample
         void OnTargetFound(TargetAbstractBehaviour behaviour)
         {
             //Debug.Log("Found: " + Target.Id);
-            //clientScript.ToRed();
+            clientScript.ToRed();
             MovingCtr.instance.StartBackAnimation(animationsObject);           
         }
 
         void OnTargetLost(TargetAbstractBehaviour behaviour)
         {
             //  Debug.Log("Lost: " + Target.Id);
-          //  clientScript.BackWhite();
+            clientScript.BackWhite();
         }
 
         void OnTargetLoad(ImageTargetBaseBehaviour behaviour, ImageTrackerBaseBehaviour tracker, bool status)
