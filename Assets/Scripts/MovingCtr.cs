@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
-public enum AnimationsObject { 狮子山, 何山, 太湖, BackGroundAnimationPlay, 春台社戏,京杭运河}
+public enum AnimationsObject { 狮子山, 何山, 太湖, 春台社戏,京杭运河}
 public class MovingCtr : MonoBehaviour {
     
     public static MovingCtr instance;
@@ -62,9 +62,6 @@ public class MovingCtr : MonoBehaviour {
                 client.MoveBehavior(OpenText, client);
                 break;
 
-            case AnimationsObject.BackGroundAnimationPlay:
-                client.MoveBehavior(MoveBGAnim, client);
-                    break;
                 default:
                     break;
             }
