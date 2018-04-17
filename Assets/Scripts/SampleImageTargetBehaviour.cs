@@ -29,7 +29,7 @@ namespace Sample
         void OnTargetFound(TargetAbstractBehaviour behaviour)
         {
             //Debug.Log("Found: " + Target.Id);
-            clientScript.ToRed();
+           // clientScript.ToRed();
             MovingCtr.instance.StartBackAnimation(animationsObject);           
         }
 
