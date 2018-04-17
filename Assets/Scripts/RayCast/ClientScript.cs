@@ -85,35 +85,24 @@ public class ClientScript : MonoBehaviour {
     }
 
     public void ShowText(Scroll scroll) {
-       // Debug.Log(scroll.name + "_" + "Show Text");
+;
         scroll.gameObject.SetActive(true);
-        scroll.animation.Play(scroll.clips[0].name);
-        LeanTween.value(0, 1, 1).setOnUpdate(delegate(float value) {
-                float fillAmout = scroll.AnimationMask.GetComponent<Image>().fillAmount;
-                //Debug.Log(fillAmout);
+        Vector3 newPos = new Vector3(UnityEngine.Random.Range(-100, 100), UnityEngine.Random.Range(-40, 40), 495);
+        scroll.transform.parent.transform.localPosition = newPos;
 
-                float xpos = GlobalFun.instance.Map(fillAmout, 0f, 1f, scroll.startPos.x, scroll.EndPos.x);
-                scroll.StartTrans.localPosition = new Vector3(xpos, scroll.StartTrans.localPosition.y, scroll.StartTrans.localPosition.z);
-        }).setOnComplete(delegate(){
+        LeanTween.scale(scroll.gameObject, Vector3.one, 1f).setEase(LeanTweenType.easeInOutCubic);
            GizemoCtr.instance.GizemoCenterAnimation(1.5f, 1f);
-            GizemoCtr.instance.IMG.fillAmount = 0;
-        });
+           GizemoCtr.instance.IMG.fillAmount = 0;
+        GizemoCtr.instance.GizemoCenter.SetActive(false);
     }
 
     public void HideText(Scroll scroll) {
-       // Debug.Log(scroll.name + "_" + "Hide Text");
-        scroll.animation.Play(scroll.clips[1].name);
-        LeanTween.value(0, 1, 1).setOnUpdate(delegate (float value) {
-            float fillAmout = scroll.AnimationMask.GetComponent<Image>().fillAmount;
-            //Debug.Log(fillAmout);
 
-            float xpos = GlobalFun.instance.Map(fillAmout, 0f, 1f,  scroll.startPos.x, scroll.EndPos.x);
-
-            scroll.StartTrans.localPosition = new Vector3(xpos, scroll.StartTrans.localPosition.y, scroll.StartTrans.localPosition.z);
-
-        }).setOnComplete(delegate() {
+        LeanTween.scale(scroll.gameObject, Vector3.zero,1f).setEase(LeanTweenType.easeInOutCubic).setOnComplete(delegate() {
+            GizemoCtr.instance.GizemoCenter.SetActive(true);
+            GizemoCtr.instance.GizemoRing.SetActive(true);
             scroll.gameObject.SetActive(false);
-            RayCast.instance.EnableRaycast = true;
         });
+
     }
 }

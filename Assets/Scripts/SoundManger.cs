@@ -11,8 +11,8 @@ public class SoundManger : MonoBehaviour {
 	void Start () {
         BGMDictionary.Add(AnimationsObject.狮子山, BGM[0]);
         BGMDictionary.Add(AnimationsObject.何山, BGM[1]);
-        BGMDictionary.Add(AnimationsObject.太湖, BGM[2]);
-        BGMDictionary.Add(AnimationsObject.春台社戏, BGM[3]);
+        BGMDictionary.Add(AnimationsObject.西部生态城, BGM[2]);
+        BGMDictionary.Add(AnimationsObject.枫桥, BGM[3]);
         BGMDictionary.Add(AnimationsObject.京杭运河, BGM[4]);
     }
 	

@@ -23,10 +23,10 @@ public class RayCast : MonoBehaviour {
     }
     // Update is called once per frame
     void Update() {
-        if (EnableRaycast) {
+        //if (EnableRaycast) {
             looking();
          //   Debug.Log("doing");
-        }
+        //}
     }
 
     void looking() {
@@ -139,11 +139,13 @@ public class RayCast : MonoBehaviour {
                 if (!i)
                 {
                     // client.UnSubscribe();
+                    client.HideText(scroll);
                 }
                 else
                 {
-                    client.SubScribe();
-                    EnableRaycast = false;
+                    client.ShowText(scroll);
+                    //  client.SubScribe();
+                    // EnableRaycast = false;
                 }
             }
         }
