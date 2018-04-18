@@ -12,7 +12,8 @@ public class ReadJson : MonoBehaviour {
     private string jsonString;
     [HideInInspector]
     public List<Information> myinformationList = new List<Information>();
-
+    [HideInInspector]
+    public Dictionary<string, Sprite> POPwindow = new Dictionary<string, Sprite>();
 
     // Use this for initialization
     void Start () {
@@ -32,7 +33,17 @@ public class ReadJson : MonoBehaviour {
             item.sprite = item.ReadImage("Image/" + item.BigTitle);
            // Debug.Log(item.sprite);
         }
+
+        Sprite[] temp = Resources.LoadAll<Sprite>("popupWindow");
+        for (int i = 0; i < temp.Length; i++)
+        {
+            POPwindow.Add(temp[i].name, temp[i]);
+        }
+        //POPwindow.Add()
     }
+
+
+   
 
     // Update is called once per frame
     void Update () {

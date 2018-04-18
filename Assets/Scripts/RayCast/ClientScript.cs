@@ -7,7 +7,7 @@ using System;
 using Sample;
 public class ClientScript : MonoBehaviour {
     public SampleImageTargetBehaviour sample;
-
+    public bool ispopupwindow;
     public UnityEvent EnterEvent;
     public UnityEvent ExitEvent;
     
@@ -85,24 +85,41 @@ public class ClientScript : MonoBehaviour {
     }
 
     public void ShowText(Scroll scroll) {
-;
-        scroll.gameObject.SetActive(true);
-        Vector3 newPos = new Vector3(UnityEngine.Random.Range(-100, 100), UnityEngine.Random.Range(-40, 40), 495);
-        scroll.transform.parent.transform.localPosition = newPos;
+        if (!ispopupwindow)
+        {
+            scroll.gameObject.SetActive(true);
+            Vector3 newPos = new Vector3(UnityEngine.Random.Range(-100, 100), UnityEngine.Random.Range(-40, 40), 495);
+            scroll.transform.parent.transform.localPosition = newPos;
 
-        LeanTween.scale(scroll.gameObject, Vector3.one, 1f).setEase(LeanTweenType.easeInOutCubic);
-           GizemoCtr.instance.GizemoCenterAnimation(1.5f, 1f);
-           GizemoCtr.instance.IMG.fillAmount = 0;
-        GizemoCtr.instance.GizemoCenter.SetActive(false);
+            LeanTween.scale(scroll.gameObject, Vector3.one, 1f).setEase(LeanTweenType.easeInOutCubic);
+            GizemoCtr.instance.GizemoCenterAnimation(1.5f, 1f);
+            GizemoCtr.instance.IMG.fillAmount = 0;
+            GizemoCtr.instance.GizemoCenter.SetActive(false);
+        }
+        else {
+            string s = sample.animationsObject.ToString();
+             Sprite sprite = ReadJson.instance.POPwindow[s];
+            RayCast.instance.pop.LoadImage(sprite);
+            LeanTween.scale(RayCast.instance.pop.gameObject, Vector3.one, 1f).setEase(LeanTweenType.easeInOutCubic);
+        }
+
     }
 
     public void HideText(Scroll scroll) {
-
-        LeanTween.scale(scroll.gameObject, Vector3.zero,1f).setEase(LeanTweenType.easeInOutCubic).setOnComplete(delegate() {
-            GizemoCtr.instance.GizemoCenter.SetActive(true);
-            GizemoCtr.instance.GizemoRing.SetActive(true);
-            scroll.gameObject.SetActive(false);
-        });
+        if (!ispopupwindow)
+        {
+            LeanTween.scale(scroll.gameObject, Vector3.zero, 1f).setEase(LeanTweenType.easeInOutCubic).setOnComplete(delegate ()
+            {
+                GizemoCtr.instance.GizemoCenter.SetActive(true);
+                GizemoCtr.instance.GizemoRing.SetActive(true);
+                scroll.gameObject.SetActive(false);
+            });
+        }
+        else {
+            LeanTween.scale(RayCast.instance.pop.gameObject, Vector3.zero, 1f).setEase(LeanTweenType.easeInOutCubic).setOnComplete(delegate () { 
+            
+            });
+    }
 
     }
 }

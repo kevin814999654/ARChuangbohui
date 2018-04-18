@@ -15,6 +15,8 @@ public class RayCast : MonoBehaviour {
     public static RayCast instance;
 
     public Scroll scroll;
+
+    public PopupWindow pop;
     // Use this for initialization
     void Start() {
         if (instance == null) {
@@ -100,7 +102,10 @@ public class RayCast : MonoBehaviour {
         try
         {
             ClientScript client = RayCastHolder.GetComponent<ClientScript>();
-            scroll.UpdateScroll(client.sample.animationsObject);
+            if (!client.ispopupwindow)
+            {
+                scroll.UpdateScroll(client.sample.animationsObject);
+            }
         }
         catch (Exception e)
         {
