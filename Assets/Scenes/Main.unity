@@ -9015,7 +9015,7 @@ Prefab:
       objectReference: {fileID: 1456707964}
     - target: {fileID: 11416542, guid: c633cd5d69c74234cb0dfa8e8bd5b984, type: 2}
       propertyPath: ScreenProtectWaitTime
-      value: 2000
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 11416542, guid: c633cd5d69c74234cb0dfa8e8bd5b984, type: 2}
       propertyPath: ScreenProtectColor.a
