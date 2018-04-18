@@ -88,7 +88,7 @@ public class ClientScript : MonoBehaviour {
         if (!ispopupwindow)
         {
             scroll.gameObject.SetActive(true);
-            Vector3 newPos = new Vector3(UnityEngine.Random.Range(-100, 100), UnityEngine.Random.Range(-40, 40), 495);
+            Vector3 newPos = new Vector3(UnityEngine.Random.Range(-40, 40), UnityEngine.Random.Range(-40, 40), 495);
             scroll.transform.parent.transform.localPosition = newPos;
 
             LeanTween.scale(scroll.gameObject, Vector3.one, 1f).setEase(LeanTweenType.easeInOutCubic);
