@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
-public enum AnimationsObject { 狮子山, 何山, 西部生态城, 枫桥, 京杭运河,科技城,灵岩山,斜桥分水,横山,东安桥, 遂初园, 济贫社仓, 法云庵, 瑞光塔, 文庙, 万年桥, 怡老园, 飞雪泉, 北寺塔, 阊门, 阊门吊桥, 山塘街, 半塘桥, 五人墓, 虎丘, 镇湖 }
+public enum AnimationsObject { 狮子山, 何山, 西部生态城, 枫桥, 京杭运河,科技城,灵岩山,斜桥分水,横山,东安桥, 遂初园, 济贫社仓, 法云庵, 瑞光塔, 文庙, 万年桥, 怡老园, 飞雪泉, 北寺塔, 阊门, 阊门吊桥, 山塘街, 半塘桥, 五人墓, 虎丘, 镇湖,藩台衙门, 斜纹布行, 院试考场, 半截街,迎接官差,运河舟楫, 怀胥桥, 枣市街, 行春桥, 越城桥, 傍寺街肆, 木渎南街, 熙攘中市 }
 public class MovingCtr : MonoBehaviour {
     
     public static MovingCtr instance;
